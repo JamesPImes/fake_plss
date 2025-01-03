@@ -446,6 +446,31 @@ class DatasetGenerator:
                 chars.pop(i)
         return ''.join(chars)
 
+    def gen_combo_desc(self, layouts: list):
+        """
+        Generate a combination of descriptions with multiple layouts.
+
+        :param layouts: List of layouts, being one or more of the
+         following options:
+         * ``'TRS_desc'``
+         * ``'desc_STR'``
+         * ``'TR_desc_S'``
+         * ``'S_desc_TR'``
+        :return:
+        """
+        dispatch = {
+            'TRS_desc': self.gen_trs_desc,
+            'TR_desc_S': self.gen_tr_desc_s,
+            'desc_STR': self.gen_desc_str,
+            'S_desc_TR': self.gen_s_desc_tr,
+        }
+        descriptions = []
+        for layout in layouts:
+            gen_func = dispatch[layout]
+            desc = gen_func()
+            descriptions.append(desc)
+        return ', '.join(descriptions)
+
     def gen_trs_desc(self):
         """
         Generate a PLSS description in the ``TRS_DESC`` layout.
@@ -514,7 +539,7 @@ class DatasetGenerator:
     def gen_all_description_components(
             self,
             min_twprge_ct=1,
-            max_twprge_ct=4,
+            max_twprge_ct=1,
             min_sec_ct=1,
             max_sec_ct=4,
             twprge_continue_wt=0.1,
@@ -893,4 +918,3 @@ class DatasetGenerator:
         for connector, elem in zip(throughs_ands, elems_str):
             out += f'{connector}{elem}'
         return out
-
