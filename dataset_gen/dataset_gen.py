@@ -434,16 +434,17 @@ class DatasetGenerator:
         n = len(word)
         if b is None:
             b = n
-        orig_idxs = random.sample(range(n), random.randint(min(a, n), max(b, n)))
-        for i in range(orig_idxs):
-            if cls.roll(drop_chance):
-                orig_idxs.pop(0)
+        orig_idxs = random.sample(range(n), random.randint(min(a, n), min(b, n)))
         shuffle_idxs = orig_idxs.copy()
         random.shuffle(shuffle_idxs)
-        twp_chars = list(word)
+        chars = list(word)
         for i, j in zip(orig_idxs, shuffle_idxs):
-            twp_chars[i], twp_chars[j] = twp_chars[j], twp_chars[i]
-        return ''.join(word)
+            chars[i], chars[j] = chars[j], chars[i]
+        # Iterate over the indexes (last to first).
+        for i in sorted(orig_idxs, reverse=True):
+            if cls.roll(drop_chance):
+                chars.pop(i)
+        return ''.join(chars)
 
     def gen_trs_desc(self):
         """
