@@ -5,6 +5,9 @@ Simulate PLSS land descriptions, optionally with intentional errors.
 
 import random
 
+from ._lorem_ipsum import LOREM_IPSUM
+LOREM_IPSUM = LOREM_IPSUM.split()
+
 # All floats are weights (out of 1.0) of how common they should appear.
 # (Approximates how commonly I see them in real data, or how I want to skew the dataset.)
 
@@ -349,10 +352,6 @@ DESC_STR_OF_THE = {
     ',': 0.5,
     ';': 0.1,
 }
-
-# with open('./resources/lorem_ipsum.txt', 'r') as f:
-#     LOREM_IPSUM = '\n'.join(f.readlines())
-# LOREM_IPSUM = LOREM_IPSUM.split()
 
 
 class DatasetGenerator:
