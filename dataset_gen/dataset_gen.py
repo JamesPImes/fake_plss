@@ -224,7 +224,8 @@ EW_COMPATIBLE_ABBREV = [EAST_ABBREV, WEST_ABBREV]
 
 HALF_WORD = {
     'half': 1.0,
-    '1/2': 0.4,  # compatible with unabbreviated halves (e.g., "north 1/2")
+    'one half': 0.1,
+    '1/2': 0.4,  # compatible with un-abbreviated halves (e.g., "north 1/2")
 }
 HALF_FRAC = {
     ' 1/2': 0.4,
@@ -703,6 +704,7 @@ class DatasetGenerator:
         if abbrev_words and self.roll(self.frac_abbrev_wt):
             abbrev_frac = True
 
+        # Default to un-abbreviated versions of "North", "East", etc.
         quarter__ = QUARTER_WORD
         half__ = HALF_WORD
         ns_compatible__ = NS_COMPATIBLE_WORD
@@ -715,6 +717,8 @@ class DatasetGenerator:
             half__ = HALF_FRAC
             ns_compatible__ = NS_COMPATIBLE_ABBREV
             ew_compatible__ = EW_COMPATIBLE_ABBREV
+            aliquot_halves__ = ALIQUOT_HALVES_ABBREV
+            aliquot_quarters__ = ALIQUOT_QUARTERS_ABBREV
         if abbrev_frac:
             aliquot_halves__ = ALIQUOT_HALVES_ABBREV
             aliquot_quarters__ = ALIQUOT_QUARTERS_ABBREV
@@ -759,7 +763,6 @@ class DatasetGenerator:
                 elif aliquot_component in ALIQUOT_QUARTER_ELEMENTS:
                     frac = quarter_wd
                 components.append(aliquot_component + frac)
-                # component_fracs.append(frac)
                 if not self.roll(self.qq_continue_wt):
                     break
             desc_list.append(components)
