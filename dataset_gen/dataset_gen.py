@@ -167,39 +167,39 @@ WEST.update(WEST_ABBREV)
 
 NORTHEAST_WORD = {
     'northeast': 1.0,
-    'north-east': 0.05,
+    # 'north-east': 0.05,
     'north east': 1.0,
 }
 NORTHWEST_WORD = {
     'northwest': 1.0,
-    'north-west': 0.05,
+    # 'north-west': 0.05,
     'north west': 1.0,
 }
 SOUTHEAST_WORD = {
     'southeast': 1.0,
-    'south-east': 0.05,
+    # 'south-east': 0.05,
     'south east': 1.0,
 }
 SOUTHWEST_WORD = {
     'southwest': 1.0,
-    'south-west': 0.05,
+    # 'south-west': 0.05,
     'south west': 1.0,
 }
 NORTHEAST_ABBREV = {
     'ne': 1.0,
-    'n.e.': 0.02,
+    # 'n.e.': 0.02,
 }
 NORTHWEST_ABBREV = {
     'nw': 1.0,
-    'n.w.': 0.02,
+    # 'n.w.': 0.02,
 }
 SOUTHEAST_ABBREV = {
     'se': 1.0,
-    's.e.': 0.02,
+    # 's.e.': 0.02,
 }
 SOUTHWEST_ABBREV = {
     'sw': 1.0,
-    's.w.': 0.02,
+    # 's.w.': 0.02,
 }
 ALIQUOT_HALVES_WORD = [NORTH_WORD, SOUTH_WORD, EAST_WORD, WEST_WORD]
 ALIQUOT_HALVES_ABBREV = [NORTH_ABBREV, SOUTH_ABBREV, EAST_ABBREV, WEST_ABBREV]
@@ -245,7 +245,7 @@ QUARTER_FRAC = {
     '/4': 0.8,
     '4': 0.8,
     '¼': 0.8,
-    '': 0.1,
+    # '': 0.1,  # 'clean_qq' config
 }
 UNABBREVIATED_ILLEGAL_FRACS = [
     '2',
